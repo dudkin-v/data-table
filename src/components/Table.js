@@ -1,15 +1,13 @@
-const Table = ({ data }) => {
-
-    const tableHeading = ["№", "name", "surname", "tel", "email"];
-    
+const Table = ({ data }) => { 
     return (
-        <div className="table">
             <table>
                 <thead>
                 <tr>
-                {tableHeading.map((el, i) => (
-                    <th key={i}>{el}</th>
-                ))}
+                    <th>№</th>
+                    <th>name</th>
+                    <th>surname</th>
+                    <th>tel</th>
+                    <th>email</th>
                 </tr>
                 </thead>
 
@@ -19,14 +17,13 @@ const Table = ({ data }) => {
                             <td>{i + 1}</td>
                             <td>{person.name}</td>
                             <td>{person.surname}</td>
-                            <td><a href="tel:{person.phoneNumber}">{person.phoneNumber}</a></td>
-                            <td><a href="mailto:{person.email}">{person.email}</a></td>
+                            <td><a href={`tel:${person.phoneNumber}`}>{person.phoneNumber}</a></td>
+                            <td><a href={`mailto:${person.email}`}>{person.email}</a></td>
                         </tr>
                     )
                     )}
                 </tbody>
             </table>
-        </div>
     )
 }
 
