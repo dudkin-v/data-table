@@ -1,10 +1,11 @@
+import Table from './components/Table';
+import {data} from './data';
+
 import './App.styles.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="app">
-      <h1 className="app-heading">Data Table</h1>
-    </div>
+    <Table data={data}/>
   );
 }
 
