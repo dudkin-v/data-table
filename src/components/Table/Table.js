@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const Table = ({ data }) => { 
     return (
             <table>
@@ -25,6 +27,16 @@ const Table = ({ data }) => {
                 </tbody>
             </table>
     )
+}
+
+Table.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        surname: PropTypes.string.isRequired,
+        phoneNumber: PropTypes.string,
+        email: PropTypes.string,
+        id: PropTypes.number.isRequired
+    })).isRequired
 }
 
 export default Table;
