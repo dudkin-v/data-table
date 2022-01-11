@@ -14,9 +14,9 @@ const Table = ({ data }) => {
                 </thead>
 
                 <tbody>
-                    {data.map((person) => (
+                    {data.map((person, i) => (
                         <tr key={person.id}>
-                            <td>{person.id}</td>
+                            <td>{i + 1}</td>
                             <td>{person.name}</td>
                             <td>{person.surname}</td>
                             <td><a href="tel:{person.phoneNumber}">{person.phoneNumber}</a></td>
