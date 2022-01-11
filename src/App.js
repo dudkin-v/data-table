@@ -1,5 +1,5 @@
-import Table from './components/Table';
-import {data} from './data';
+import { Table } from './components/Table';
+import { data } from './data';
 
 import './App.styles.css';
 
