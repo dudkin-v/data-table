@@ -3,12 +3,3 @@
   padding: 0;
   text-align: center;
 }
-
-table {
-  background-color: grey;
-  border: 2px solid orange;
-}
-
-th, td, tr {
-  border: 1px solid white;
-}

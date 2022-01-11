@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 
+import './Table.styles.css';
+
 const Table = ({ data }) => { 
     return (
             <table>
@@ -33,8 +35,8 @@ Table.propTypes = {
     data: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string.isRequired,
         surname: PropTypes.string.isRequired,
-        phoneNumber: PropTypes.string,
-        email: PropTypes.string,
+        phoneNumber: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
         id: PropTypes.number.isRequired
     })).isRequired
 }
