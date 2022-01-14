@@ -4,23 +4,30 @@ import PropTypes from 'prop-types';
 
 import './Form.styles.css';
 
-const Form = () => {
+const Form = ( { addPerson, person, data }) => {
     const [name, setName] = useState('');
     const [surename, setSurename] = useState('');
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
-    const [id, setId] = useState(null);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('submit', name, surename, email, phoneNumber);
+        addPerson(name, surename, email, phoneNumber);
+        data.push(person);//error!!!
     }
 
     const handleNameChange = ({ target: {value} }) => {
-        console.log('change');
-        setName(value);
+        setName(value.trim());
     }
-
+    const handleSurenameChange = ({ target: {value} }) => {
+        setSurename(value.trim());
+    }
+    const handleEmailChange = ({ target: {value} }) => {
+        setEmail(value.trim());
+    }
+    const handlePhoneNumberChange = ({ target: {value} }) => {
+        setPhoneNumber(value.trim());
+    }
 
     return (
         <div className='form-container'>
@@ -40,7 +47,7 @@ const Form = () => {
                   name='surename'
                   id='surename'
                   value={surename}
-                  onChange={handleNameChange}
+                  onChange={handleSurenameChange}
                 />
               
               <label htmlFor='email'>Email:</label>
@@ -49,7 +56,7 @@ const Form = () => {
                   name='email'
                   id='email'
                   value={email}
-                  onChange={handleNameChange}
+                  onChange={handleEmailChange}
                 />
 
                 <label htmlFor='phoneNumber'>Tel:</label>
@@ -58,20 +65,23 @@ const Form = () => {
                   name='phoneNumber'
                   id='phoneNumber'
                   value={phoneNumber}
-                  onChange={handleNameChange}
+                  onChange={handlePhoneNumberChange}
                 />
     
               <div>
                 <button type='submit'>Add</button>
               </div>
 
-              <div>
-                {name}
-                </div>
           </form>
         </div>
         
     )
+}
+
+Form.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
+    person: PropTypes.object.isRequired,
+    addPerson: PropTypes.func.isRequired
 }
 
 export default Form;
