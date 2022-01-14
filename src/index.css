@@ -1,5 +1,9 @@
 * {
   margin: 0;
   padding: 0;
-  text-align: center;
+}
+
+body, html {
+  display: flex;
+  justify-content: center;
 }
