@@ -1,0 +1,21 @@
+.form-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #D09683;
+    border-radius: 15px;
+    
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    
+}
+
+input {
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 16px;
+}
