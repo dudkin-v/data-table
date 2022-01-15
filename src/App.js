@@ -4,10 +4,10 @@ import './App.styles.css';
 
 const App = () => {
  
- const createPerson = (name, surename, email, phoneNumber) => {
+ const createPerson = (name, surname, email, phoneNumber) => {
     return ([{
          name,
-         surename,
+         surname,
          email,
          phoneNumber,
          id: Date.now()

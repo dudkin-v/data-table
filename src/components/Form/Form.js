@@ -10,7 +10,7 @@ import './Form.styles.css';
     const Form = ( { addPerson }) => {
     const [data, setData] = useState(JSON.parse(localStorage.getItem('data')) || []);
     const [name, setName] = useState('');
-    const [surename, setSurename] = useState('');
+    const [surname, setSurname] = useState('');
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
 
@@ -21,14 +21,18 @@ import './Form.styles.css';
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setData(data.concat(addPerson(name, surename, email, phoneNumber)));
+        setData(data.concat(addPerson(name, surname, email, phoneNumber)));
+        setName('');
+        setSurname('');
+        setEmail('');
+        setPhoneNumber('');
     }
 
     const handleNameChange = ({ target: {value} }) => {
         setName(value.trim());
     }
-    const handleSurenameChange = ({ target: {value} }) => {
-        setSurename(value.trim());
+    const handleSurnameChange = ({ target: {value} }) => {
+        setSurname(value.trim());
     }
     const handleEmailChange = ({ target: {value} }) => {
         setEmail(value.trim());
@@ -50,13 +54,13 @@ import './Form.styles.css';
                     onChange={handleNameChange}
                   />
               
-                <label htmlFor='surename'>Surename:</label>
+                <label htmlFor='surname'>Surname:</label>
                   <input 
                     type='text'
-                    name='surename'
-                    id='surename'
-                    value={surename}
-                    onChange={handleSurenameChange}
+                    name='surname'
+                    id='surname'
+                    value={surname}
+                    onChange={handleSurnameChange}
                   />
               
                 <label htmlFor='email'>Email:</label>
