@@ -12,13 +12,17 @@ import './Form.styles.css';
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        setData(data.concat(addPerson(name, surname, email, phoneNumber)));
-        setName('');
+    const resetFields = () => {
+      setName('');
         setSurname('');
         setEmail('');
         setPhoneNumber('');
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setData(data.concat(addPerson(name, surname, email, phoneNumber)));
+        resetFields();
     }
 
     const handleDelete = (id) => () => setData(data.filter(person => person.id !== id));
