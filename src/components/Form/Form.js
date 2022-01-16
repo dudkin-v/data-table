@@ -25,7 +25,7 @@ import './Form.styles.css';
         resetFields();
     }
 
-    const handleDelete = (id) => () => setData(data.filter(person => person.id !== id));
+    const handleDelete  = (id) => () => setData(data.filter(person => person.id !== id));
 
     const handleNameChange = ({ target: {value} }) => {
         setName(value.trim());
@@ -87,7 +87,7 @@ import './Form.styles.css';
             </form>
           </div>
 
-          <Table data={data} handleDelete={handleDelete} />
+          <Table data={data} onDelete={handleDelete } />
         </div>
     )
 }

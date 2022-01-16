@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import './Table.styles.css';
 
-const Table = ({ data, handleDelete }) => {
+const Table = ({ data, onDelete }) => {
     return (
             <table>
                 <thead>
@@ -23,7 +23,7 @@ const Table = ({ data, handleDelete }) => {
                             <td>{person.surname}</td>
                             <td><a href={`tel:${person.phoneNumber}`}>{person.phoneNumber}</a></td>
                             <td><a href={`mailto:${person.email}`}>{person.email}</a></td>
-                            <td><button onClick={handleDelete(person.id)}>Delete</button></td>
+                            <td><button onClick={onDelete(person.id)}>Delete</button></td>
                         </tr>
                     )
                     )}
