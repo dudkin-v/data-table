@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import './Table.styles.css';
 
-const Table = ({ data }) => { 
+const Table = ({ data, handleDelete }) => {
     return (
             <table>
                 <thead>
@@ -23,6 +23,7 @@ const Table = ({ data }) => {
                             <td>{person.surname}</td>
                             <td><a href={`tel:${person.phoneNumber}`}>{person.phoneNumber}</a></td>
                             <td><a href={`mailto:${person.email}`}>{person.email}</a></td>
+                            <td><button onClick={handleDelete(person.id)}>Delete</button></td>
                         </tr>
                     )
                     )}
@@ -38,7 +39,8 @@ Table.propTypes = {
         phoneNumber: PropTypes.string.isRequired,
         email: PropTypes.string.isRequired,
         id: PropTypes.number.isRequired
-    })).isRequired
+    })).isRequired,
+    handleDelete: PropTypes.func.isRequired
 }
 
 export default Table;

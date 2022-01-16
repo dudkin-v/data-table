@@ -16,7 +16,6 @@ import './Form.styles.css';
 
     useEffect(() => {
       localStorage.setItem('data', JSON.stringify(data));
-      console.log(data)
   }, [data]);
 
     const handleSubmit = (event) => {
@@ -27,6 +26,8 @@ import './Form.styles.css';
         setEmail('');
         setPhoneNumber('');
     }
+
+    const handleDelete = (id) => () => setData(data.filter(person => person.id !== id));
 
     const handleNameChange = ({ target: {value} }) => {
         setName(value.trim());
@@ -62,6 +63,15 @@ import './Form.styles.css';
                     value={surname}
                     onChange={handleSurnameChange}
                   />
+
+                <label htmlFor='phoneNumber'>Tel:</label>
+                  <input 
+                    type='text'
+                    name='phoneNumber'
+                    id='phoneNumber'
+                    value={phoneNumber}
+                    onChange={handlePhoneNumberChange}
+                  />
               
                 <label htmlFor='email'>Email:</label>
                   <input 
@@ -72,15 +82,6 @@ import './Form.styles.css';
                     onChange={handleEmailChange}
                   />
 
-                  <label htmlFor='phoneNumber'>Tel:</label>
-                  <input 
-                    type='text'
-                    name='phoneNumber'
-                    id='phoneNumber'
-                    value={phoneNumber}
-                    onChange={handlePhoneNumberChange}
-                  />
-    
                 <div>
                   <button type='submit'>Add</button>
                 </div>
@@ -88,7 +89,7 @@ import './Form.styles.css';
             </form>
           </div>
 
-          <Table data={data}/>
+          <Table data={data} handleDelete={handleDelete} />
         </div>
     )
 }
