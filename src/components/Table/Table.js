@@ -40,7 +40,8 @@ Table.propTypes = {
         email: PropTypes.string.isRequired,
         id: PropTypes.number.isRequired
     })).isRequired,
-    handleDelete: PropTypes.func.isRequired
+    
+    onDelete: PropTypes.func.isRequired
 }
 
 export default Table;

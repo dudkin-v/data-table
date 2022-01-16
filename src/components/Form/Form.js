@@ -1,12 +1,9 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { Table } from '../Table';
-
 import './Form.styles.css';
 
-    const Form = ( { addPerson }) => {
-    const [data, setData] = useState([]);
+    const Form = ( { data, setData, addPerson }) => {
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [email, setEmail] = useState('');
@@ -25,8 +22,6 @@ import './Form.styles.css';
         resetFields();
     }
 
-    const handleDelete  = (id) => () => setData(data.filter(person => person.id !== id));
-
     const handleNameChange = ({ target: {value} }) => {
         setName(value.trim());
     }
@@ -41,7 +36,6 @@ import './Form.styles.css';
     }
 
     return (
-        <div className='form'>
           <div className='form-container'>
             <form onSubmit={handleSubmit}>
                <label htmlFor='name'>Name:</label>
@@ -86,14 +80,12 @@ import './Form.styles.css';
 
             </form>
           </div>
-
-          <Table data={data} onDelete={handleDelete } />
-        </div>
     )
 }
 
 Form.propTypes = {
-    addPerson: PropTypes.func.isRequired
+    data: PropTypes.array.isRequired,
+    addPerson: PropTypes.func.isRequired,
 }
 
 export default Form;
