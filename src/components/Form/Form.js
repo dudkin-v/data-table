@@ -1,22 +1,16 @@
-import { useState, useEffect } from 'react';
-import { Table } from '../Table';
-
-// import { initialData } from '../../initialData';
-
+import { useState } from 'react';
 import PropTypes from 'prop-types';
+
+import { Table } from '../Table';
 
 import './Form.styles.css';
 
     const Form = ( { addPerson }) => {
-    const [data, setData] = useState(JSON.parse(localStorage.getItem('data')) || []);
+    const [data, setData] = useState([]);
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
-
-    useEffect(() => {
-      localStorage.setItem('data', JSON.stringify(data));
-  }, [data]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
