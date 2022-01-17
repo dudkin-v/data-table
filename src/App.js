@@ -15,13 +15,8 @@ const App = () => {
   return (
     <div className='app'>
       <h1 className='app-heading'>Data table</h1>
-      <Form 
-      data={data} 
-      setData={setData}
-      onSubmit={createPerson} />
-      <Table
-      data={data}
-      onDelete={removePerson} />
+      <Form onSubmit={createPerson} />
+      <Table data={data} onDelete={removePerson} />
     </div>
   );
 }

@@ -18,7 +18,7 @@ import './Form.styles.css';
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        
+
         onSubmit({
           name: name,
           surname: surname,
@@ -83,7 +83,7 @@ import './Form.styles.css';
                   />
 
                 <div>
-                  <button type='submit'>Add</button>
+                  <button className='add-btn' type='submit'>Add</button>
                 </div>
 
             </form>
@@ -92,8 +92,7 @@ import './Form.styles.css';
 }
 
 Form.propTypes = {
-    data: PropTypes.array.isRequired,
-    onSubmit: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired
 }
 
 export default Form;
