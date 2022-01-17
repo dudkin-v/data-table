@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './Form.styles.css';
 
-    const Form = ( { data, setData, addPerson }) => {
+    const Form = ( { onSubmit }) => {
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [email, setEmail] = useState('');
@@ -18,7 +18,15 @@ import './Form.styles.css';
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setData(data.concat(addPerson(name, surname, email, phoneNumber)));
+        
+        onSubmit({
+          name: name,
+          surname: surname,
+          email: email,
+          phoneNumber: phoneNumber,
+          id: Date.now()
+        });
+
         resetFields();
     }
 
@@ -85,7 +93,7 @@ import './Form.styles.css';
 
 Form.propTypes = {
     data: PropTypes.array.isRequired,
-    addPerson: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
 }
 
 export default Form;

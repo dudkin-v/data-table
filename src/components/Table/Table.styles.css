@@ -11,6 +11,7 @@ table {
     background: #363237;
     color: white;
     padding: 10px 20px;
+    width: 100px;
     }
 
     th, td {
@@ -34,15 +35,11 @@ table {
     }
 
     tr:last-child td:first-child {
-    border-radius: 0 0 0 10px;
+    border-bottom-left-radius: 10px;
     }
-
-    tr:last-child td:last-child {
-    border-radius: 0 0 10px 0;
-    }
-
-    tr td:last-child {
-    border-right: none;
+    
+    tr:last-child td:last-child{
+        border-bottom-right-radius: 10px;
     }
 
     td > a {
@@ -52,4 +49,22 @@ table {
 
     td > a:hover {
         color: #2D4262;
+    }
+
+    tr td:first-child {
+     position: relative; 
+    }
+
+    .delete-btn {
+        position: absolute;
+        left: 5px;
+        top: auto;
+        font-size: 10px;
+        font-weight: 900;
+        width: 50px;
+        height: 20px;
+        border-radius: 10px;
+        border: 2px solid #363237;
+        background-color: #D09683;
+        color: #363237;
     }

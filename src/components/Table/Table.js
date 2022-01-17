@@ -18,12 +18,14 @@ const Table = ({ data, onDelete }) => {
                 <tbody>
                     {data.map((person, i) => (
                         <tr key={person.id}>
-                            <td>{i + 1}</td>
+                            <td>
+                                <button className='delete-btn' onClick={onDelete(person.id)}>Delete</button>
+                                {i + 1}
+                                </td>
                             <td>{person.name}</td>
                             <td>{person.surname}</td>
                             <td><a href={`tel:${person.phoneNumber}`}>{person.phoneNumber}</a></td>
                             <td><a href={`mailto:${person.email}`}>{person.email}</a></td>
-                            <td><button onClick={onDelete(person.id)}>Delete</button></td>
                         </tr>
                     )
                     )}
@@ -40,7 +42,7 @@ Table.propTypes = {
         email: PropTypes.string.isRequired,
         id: PropTypes.number.isRequired
     })).isRequired,
-    
+
     onDelete: PropTypes.func.isRequired
 }
 

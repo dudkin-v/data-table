@@ -6,19 +6,13 @@ import { Table } from './components/Table';
 import './App.styles.css';
 
 const App = () => {
-  const [data, setData] = useState([]);
+ const [data, setData] = useState([]);
  
- const createPerson = (name, surname, email, phoneNumber) => {
-    return ([{
-         name,
-         surname,
-         email,
-         phoneNumber,
-         id: Date.now()
-     }])
- }
+ const createPerson = (newPerson) => {
+   setData([...data, newPerson])
+}
 
- const handleDelete = (id) => () => setData(data.filter(person => person.id !== id));
+ const removePerson = (id) => () => setData(data.filter(person => person.id !== id));
 
   return (
     <div className='app'>
@@ -26,10 +20,10 @@ const App = () => {
       <Form 
       data={data} 
       setData={setData}
-      addPerson={createPerson} />
+      onSubmit={createPerson} />
       <Table
       data={data}
-      onDelete={handleDelete} />
+      onDelete={removePerson} />
     </div>
   );
 }
