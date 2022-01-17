@@ -8,10 +8,8 @@ import './App.styles.css';
 const App = () => {
  const [data, setData] = useState([]);
  
- const createPerson = (newPerson) => {
-   setData([...data, newPerson])
-}
-
+ const createPerson = (newPerson) => setData([...data, newPerson]);
+   
  const removePerson = (id) => () => setData(data.filter(person => person.id !== id));
 
   return (
