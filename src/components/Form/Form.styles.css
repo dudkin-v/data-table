@@ -30,4 +30,10 @@ input {
     color: #363237;
     font-size: 14px;
     font-weight: 700;
+    cursor: pointer;
+}
+
+.error {
+    color: #D09683;
+    font-weight: 500;
 }

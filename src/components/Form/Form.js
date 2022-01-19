@@ -10,7 +10,7 @@ import './Form.styles.css';
     const [phoneNumber, setPhoneNumber] = useState('');
 
     const resetFields = () => {
-      setName('');
+        setName('');
         setSurname('');
         setEmail('');
         setPhoneNumber('');
@@ -19,7 +19,7 @@ import './Form.styles.css';
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        onSubmit({
+         onSubmit({
           name: name,
           surname: surname,
           email: email,
@@ -55,7 +55,7 @@ import './Form.styles.css';
                     onChange={handleNameChange}
                   />
               
-                <label htmlFor='surname'>Surname:</label>
+               <label htmlFor='surname'>Surname:</label>
                   <input 
                     type='text'
                     name='surname'
