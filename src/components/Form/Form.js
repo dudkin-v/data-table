@@ -1,85 +1,77 @@
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 
 import './Form.styles.css';
 
     const Form = ( { onSubmit }) => {
-    const [name, setName] = useState('');
-    const [surname, setSurname] = useState('');
-    const [email, setEmail] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
+    const {
+      register,
+      formState: { errors },
+      handleSubmit,
+      reset
+    } = useForm();
 
-    const resetFields = () => {
-        setName('');
-        setSurname('');
-        setEmail('');
-        setPhoneNumber('');
-    }
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const toSubmit = (data) => {
 
          onSubmit({
-          name: name,
-          surname: surname,
-          email: email,
-          phoneNumber: phoneNumber,
+          name: data.name,
+          surname: data.surname,
+          email: data.email,
+          phoneNumber: data.phoneNumber,
           id: Date.now()
         });
 
-        resetFields();
-    }
-
-    const handleNameChange = ({ target: {value} }) => {
-        setName(value.trim());
-    }
-    const handleSurnameChange = ({ target: {value} }) => {
-        setSurname(value.trim());
-    }
-    const handleEmailChange = ({ target: {value} }) => {
-        setEmail(value.trim());
-    }
-    const handlePhoneNumberChange = ({ target: {value} }) => {
-        setPhoneNumber(value.trim());
+        reset();
     }
 
     return (
           <div className='form-container'>
-            <form onSubmit={handleSubmit}>
-               <label htmlFor='name'>Name:</label>
-                  <input 
-                    type='text'
-                    name='name'
-                    id='name'
-                    value={name}
-                    onChange={handleNameChange}
+            <form onSubmit={handleSubmit(toSubmit)}>
+               <label htmlFor='name' className={errors.name ? 'error' : ''}>
+                 {errors.name ? errors.name.message : 'Name:'}
+               </label>
+                  <input type='text'id='name'
+                  {...register('name', {
+                    required: 'The field is required:',
+                    minLength: {
+                      value: 2,
+                      message: 'Please tipe at least 2 symbols:'
+                    }
+                  })}
                   />
               
-               <label htmlFor='surname'>Surname:</label>
-                  <input 
-                    type='text'
-                    name='surname'
-                    id='surname'
-                    value={surname}
-                    onChange={handleSurnameChange}
+               <label htmlFor='surname' className={errors.surname ? 'error' : ''}>
+                 {errors.surname ? errors.surname.message : 'Surname:'}</label>
+                  <input type='text'id='surname'
+                  {...register('surname', {
+                    required: 'The field is required:',
+                    minLength: {
+                      value: 2,
+                      message: 'Please tipe at least 2 symbols:'
+                    }
+                  })}
                   />
 
-                <label htmlFor='phoneNumber'>Tel:</label>
-                  <input 
-                    type='text'
-                    name='phoneNumber'
-                    id='phoneNumber'
-                    value={phoneNumber}
-                    onChange={handlePhoneNumberChange}
+                <label htmlFor='phoneNumber' className={errors.phoneNumber ? 'error' : ''}>
+                 {errors.phoneNumber ? errors.phoneNumber.message : 'Tel:'}</label>
+                  <input type='number'id='phoneNumber'
+                  {...register('phoneNumber', {
+                    pattern: {
+                      value: /^((\+?3)?8)?0\d{9}$/,
+                      message: 'Enter valid phone number:'
+                    }
+                  })}
                   />
               
-                <label htmlFor='email'>Email:</label>
-                  <input 
-                    type='text'
-                    name='email'
-                    id='email'
-                    value={email}
-                    onChange={handleEmailChange}
+                <label htmlFor='email' className={errors.email ? 'error' : ''}>
+                 {errors.email ? errors.email.message : 'Email:'}</label>
+                  <input type='email'id='email'
+                  {...register('email', {
+                    pattern: {
+                      value: /\S+@\S+\.\S+/,
+                      message: 'Enter valid email:' 
+                  }
+                  })}
                   />
 
                 <div>
