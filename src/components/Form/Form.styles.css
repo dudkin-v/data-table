@@ -1,0 +1,39 @@
+.form-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #D09683;
+    border-radius: 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+input {
+    width: 250px;
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+}
+
+.add-btn {
+    width: 50px;
+    height: 25px;
+    border-radius: 10px;
+    border: 1px solid #363237;
+    background-color: #D09683;
+    color: #363237;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.error {
+    color: #D09683;
+    font-weight: 500;
+}
